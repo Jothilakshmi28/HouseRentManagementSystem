@@ -1,0 +1,16 @@
+﻿@model HouseRentManagementSystem.Models.BHK_type
+@{
+    ViewBag.Title = "BHK_type";
+}
+
+<h2>BHK_type</h2>
+
+
+<div class="container">
+    <div class="form-group">
+        @if (ViewBag.bhk_types != null)
+        {
+            @Html.DropDownListFor(model => model.bhk_id, ViewBag.bhk_types as SelectList, "--Select--", new { @class = "form-control" })
+        }
+    </div>
+</div>

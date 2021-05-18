@@ -1,0 +1,303 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.Prop>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+
+<head>
+    <script>
+        $(window).on("load resize ", function () {
+            var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+            $('.tbl-header').css({ 'padding-right': scrollWidth });
+        }).resize();
+
+    </script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Font awesome -->
+    <link href="~/Content/user/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/user/css/bootstrap.css" rel="stylesheet">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/user/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/user/css/nouislider.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/Content/user/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/user/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="~/Content/user/css/style.css" rel="stylesheet">
+
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link src="https://fonts.googleapis.com/css?family=Roboto:400,500,300,700" type="text/css">
+    <link src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/css">
+
+    <style>
+        .btn {
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            padding: 7px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Green */
+        .danger {
+            border-color: red;
+            color: black;
+        }
+
+            .danger:hover {
+                background-color: red;
+                color: white;
+            }
+
+        .primary {
+            border-color: dodgerblue;
+            color: black;
+        }
+
+            .primary:hover {
+                background-color: dodgerblue;
+                color: white;
+            }
+
+        .secondary {
+            border-color: gray;
+            color: black;
+        }
+
+            .secondary:hover {
+                background-color: gray;
+                color: white;
+            }
+        /* Green */
+        .info {
+            border-color: orange;
+            color: black;
+        }
+
+            .info:hover {
+                background-color: orange;
+                color: white;
+            }
+
+        .mySlides {
+            display: none
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .tbl-header {
+            background-color: mediumturquoise;
+            position: fixed;
+        }
+
+        .tbl-content {
+            height: 300px;
+            position: relative;
+            overflow-x: auto;
+            margin-top: 0px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        th {
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 200;
+            font-size: 15px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 25px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 15px;
+            color: #fff;
+            border-bottom: solid 1px rgba(255,255,255,0.1);
+        }
+
+
+        /* demo styles */
+        body {
+            color: black;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        section {
+            font-family: 'Roboto', sans-serif;
+            align-content: flex-end;
+        }
+
+        button {
+            float: right;
+            margin: 5px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        .custom-height-slider {
+            height: 75px;
+        }
+
+        .dx-field > .dx-rangeslider {
+            flex: 1;
+        }
+
+        .logo {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+        }
+
+        article {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 330px !important;
+            border: solid;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-bottom: 150px;
+        }
+
+
+        article {
+            border-left: 1px dotted #97d947;
+            font-size: 18px;
+            color: #333;
+            border: 3px solid #97d947;
+            height: 316px;
+            width: 236px;
+            margin-top: 0;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 15px;
+        }
+
+            article hover {
+                -webkit-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                -moz-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                box-shadow: 3px 1px 25px 7px black;
+            }
+
+        .d-grid {
+            margin-left: -0.8rem !important;
+        }
+    </style>
+</head>
+<body>
+
+    <h3 style="text-align:center">MY PROPERTIES</h3>
+
+    <button type="button" class="btn secondary " onclick="location.href = '@Url.Action("Create", "Props")'">
+        Add new property
+    </button>
+
+    <br>
+    @foreach (var item in Model)
+    {
+
+        <section id="aa-latest-property">
+            <div class="container">
+                <div class="aa-latest-properties-content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <article class="aa-properties-item">
+                                <a href="#" class="aa-properties-item-img">
+                                    @for (int i = 0; i < 1; i++)
+                                    {
+                                        var image = item.Images1;
+
+                                        if (item.Images1 != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(image[i].PropertyImage);
+                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                            <img src="@imgsrc" />
+
+                                        }
+                                    }
+                                </a>
+                                <div class="aa-tag for-rent">
+                                    For Rent
+                                </div>
+                                <div class="aa-properties-item-content">
+                                    <div class="aa-properties-info">
+                                        <span>@item.House_type</span>
+                                        <span>@item.BHK_type</span>
+                                        <span>@item.SquareFeet sq.ft</span>
+                                    </div>
+                                    <div class="aa-properties-about">
+                                        <h3><a href="#">@item.PropertyName</a></h3>
+                                        <p>This is a @item.BHK_type @item.House_type of @item.SquareFeet (Sq.ft.) in @item.city city at @item.state</p>
+                                    </div>
+                                    <div class="aa-properties-detial">
+                                        <span class="aa-price">
+                                            <span>&#8377;</span> @item.Rent
+                                        </span>
+                                        <a href="/Props/Details/@item.Id" class="aa-secondary-btn">View Details</a>
+                                        <br> <br>
+                                    </div>
+
+                                    <button type="button" class="btn secondary " onclick="location.href = '@Url.Action("Images", "Props",new { id = item.Id })'">
+                                        Show images
+                                    </button>
+
+
+
+                                    <div class="accordion" style="text-align:left">
+
+                                        <button type="button" class="btn danger " onclick="location.href = '@Url.Action("Delete", "Props",new { id = item.Id })'">
+                                            Delete
+                                        </button>
+                                        <button type="button" class="btn info " onclick="location.href = '@Url.Action("Edit", "Props",new { id = item.Id })'">
+                                            Edit
+                                        </button>
+                                        <button type="button" class="btn primary " onclick="location.href = '@Url.Action("Request", "Renter",new { id = item.Id })'">
+                                            Customer's Request
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr />
+    }
+    <img src="~/Icons/logo.png" class="logo" />
+
+</body>

@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <script>
+        $(function () {
+            $('.box-menu .wrapper').on('click', function () {
+                $('.box-menu').toggleClass('full-menu');
+                $('.hamburger').toggleClass('active');
+            });
+            $('a').on('click', function () {
+                $(this).siblings('a').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+    <style>
+
+        .dropdown-menu .dropdown-item {
+            background-color: white;
+            border: inset;
+            border-color: gray;
+            color: palevioletred;
+        }
+
+        .box-menu {
+            position: absolute;
+            right: 1140px;
+            top: 0px;
+            cursor: pointer;
+            background: gray;
+            width: 60px;
+            height: 60px;
+            box-shadow: 2px 3px 5px rgba(0,0,0,.3);
+            border-radius: 60px;
+            transition: height .4s;
+        }
+
+        .full-menu {
+            height: 300px;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        /*ГАМБУРГЕР*/
+        .hamburger {
+            position: absolute;
+            left: 22px;
+            top: 22px;
+            width: 16px;
+            height: 16px;
+        }
+
+            .hamburger span {
+                position: absolute;
+                display: inline-block;
+                height: 2px;
+                width: 100%;
+                background: #fff;
+                border-radius: 10px;
+                /*transition: top .3s, transform .3s, left .3s, width .3s;*/
+                transition: all .3s;
+            }
+
+                .hamburger span:nth-child(1) {
+                    top: 3px;
+                }
+
+                .hamburger span:nth-child(2) {
+                    top: 8px;
+                }
+
+                .hamburger span:nth-child(3) {
+                    top: 8px;
+                }
+
+                .hamburger span:nth-child(4) {
+                    top: 13px;
+                }
+
+            .hamburger.active span:nth-child(1) {
+                width: 0;
+                margin-left: 8px;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                transform: rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg);
+            }
+
+            .hamburger.active span:nth-child(4) {
+                width: 0;
+                margin-left: 8px;
+            }
+
+        /*ОСНОВНОЕ МЕНЮ*/
+        .menu {
+            position: relative;
+            left: -9999px;
+        }
+
+            .menu a {
+                white-space: nowrap;
+                position: relative;
+                display: inline-block;
+                color: #333;
+                text-decoration: none;
+                width: 150px;
+                height: 58px;
+                line-height: 58px;
+                font-family: Tahoma;
+                font-size: medium;
+            }
+
+                .menu a::after {
+                    content: '';
+                    position: absolute;
+                    left: 57px;
+                    top: 29px;
+                    height: 0px;
+                    width: 3px;
+                    background: #fff;
+                    transition: height .3s, top .3s;
+                }
+
+                .menu a.active::after {
+                    top: 19px;
+                    height: 20px;
+                }
+
+                .menu a span {
+                    opacity: 0;
+                    display: inline-block;
+                    font-size: 14px;
+                }
+
+                    .menu a span.icon {
+                        transform: scale(.5);
+                        color: #fff;
+                        font-size: 18px;
+                        display: inline-block;
+                        width: 60px;
+                        text-align: center;
+                        transition: transform .3s;
+                    }
+
+                    .menu a span.text {
+                        text-shadow: 1px 1px 0px rgba(0,0,0,.3);
+                        opacity: 0;
+                        margin-left: 40px;
+                        transition: margin .3s, opacity .3s, transform .3s;
+                    }
+
+        /*Развернутое меню*/
+        .full-menu .menu {
+            left: 0;
+        }
+
+            .full-menu .menu a {
+                /*opacity: .8;*/
+            }
+
+                .full-menu .menu a:hover span {
+                    opacity: 1;
+                }
+
+                .full-menu .menu a span {
+                    opacity: .8;
+                }
+
+                    .full-menu .menu a span.icon {
+                        transform: scale(1.1);
+                    }
+
+                    .full-menu .menu a span.text {
+                        margin-left: 25px;
+                        /*opacity: .7;*/
+                    }
+
+                .full-menu .menu a:hover span.text {
+                    /*margin-left: 30px;*/
+                    transform: translateX(5px);
+                    transition-delay: 0s;
+                    background-color:white;
+                }
+
+        /*Анимация меню*/
+        .menu a:nth-child(1) span {
+            transition: all .5s .1s, opacity .5s 0s, transform .5s 0s;
+           
+        }
+
+        .menu a:nth-child(2) span {
+            transition: all .5s .15s, opacity .5s 0s, transform .5s 0s;
+        }
+
+        .menu a:nth-child(3) span {
+            transition: all .5s .2s, opacity .5s 0s, transform .5s 0s;
+        }
+
+        .menu a:nth-child(4) span {
+            transition: all .5s .25s, opacity .5s 0s, transform .5s 0s;
+        }
+
+        body {
+            margin: 0;
+        }
+        
+        #nav {
+            position: relative;
+            margin-top: 0;
+            padding-top: 0;
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</head>
+    <body>
+            <nav class="navbar navbar-expand-md bg-default navbar-static-top" id="nav">
+              
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="~/Account/HomePage">
+                        <img src="~/Icons/logo.png" width="100" height="100"> 
+                        </a>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" style="float:right;">
+                            <li>
+
+
+                                @if (Request.IsAuthenticated)
+
+                                {
+                                    if (Session["Name"] != null)
+                                    {
+
+                                        int id = Convert.ToInt32(Session["SellerID"]);
+                                        <div class="box-menu">
+                                            <div class="wrapper">
+                                                <div class="hamburger">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                            <div class="menu">
+                                                    <a href="~/Renter/Index"><span class="icon fa fa-user"></span><span class="text">My profile</span></a>
+                                                 <a href="~/Renter/Edit/@id"><span class="icon fas fa-edit"></span><span class="text">Edit Profile</span></a>
+                                                   <a href="~/Renter/SoldProperty/@id"><span class="icon fa fa-home"></span><span class="text">Sold property</span></a>
+                                                   <a href="~/Props/Create/@id"><span class="icon fa fa-plus"></span><span class="text">Add property</span></a>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="collapse navbar-collapse" id="navbar-list-4">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span style=" text-align:end">@Convert.ToString(Session["Name"])</span>
+
+                                                        @if (ViewBag.image != null)
+                                                        {
+                                                            string base64 = Convert.ToBase64String(ViewBag.image);
+                                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                                            <img src="@imgsrc" style="height:40px; width:40px;" class="rounded-circle">
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <img src="~/Icons/avatar.png" style="height:40px; width:40px;">
+
+                                                        }
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+                                                        <a class="dropdown-item" href="~/Account/Logout"><span class="glyphicon glyphicon-log-out"></span> &nbsp;Log Out</a>
+
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    if (Session["UserName"] != null)
+                                    {
+
+                                        int id = Convert.ToInt32(Session["UserID"]);
+                                        <div class="box-menu">
+                                            <div class="wrapper">
+                                                <div class="hamburger">
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                   <span></span>
+                                                  
+                                                </div>
+                                            </div>
+                                            <div class="menu">
+                                                <a href="~/Tenant/Index"><span class="icon fa fa-user"></span><span class="text">My profile</span></a>
+                                                <a href="~/Tenant/Edit/@id"><span class="icon fas fa-edit"></span><span class="text">Edit Profile</span></a>
+                                                <a href="~/Props/RequestedProperty"><span class="icon fa fa-building-o"></span><span class="text">My requested Properties</span></a>
+                                                <a href="~/Props/UserIndex"><span class="icon fa fa-home"></span><span class="text">Properties for rent</span></a>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="collapse navbar-collapse" id="navbar-list-4">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span style=" text-align:end"> @Convert.ToString(Session["UserName"])</span>
+
+                                                        @if (ViewBag.image != null)
+                                                        {
+                                                            string base64 = Convert.ToBase64String(ViewBag.image);
+                                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                                            <img src="@imgsrc" style="height:40px; width:40px;" class="rounded-circle">
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <img src="~/Icons/avatar.png" style="height:40px; width:40px;">
+
+                                                        }
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                                        <a class="dropdown-item" href="~/Account/Logout" > <span class="glyphicon glyphicon-log-out"></span>&nbsp; Log Out</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+                                    }
+
+
+                                }
+
+
+
+
+
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+               </nav>
+           <div class="container body-content">
+
+                    @RenderBody()
+                    <hr />
+
+                   </div>
+
+                <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+    </html>

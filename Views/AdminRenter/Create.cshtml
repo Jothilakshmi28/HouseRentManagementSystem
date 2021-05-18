@@ -1,0 +1,100 @@
+﻿@model HouseRentManagementSystem.Models.Renter
+
+
+<!DOCTYPE html>
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .scroller {
+        height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    .panel-body {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .form-horizontal {
+        margin: auto;
+        width: 45%;
+    }
+</style>
+<i class="fas fa-user-plus" style="font-size:50px;position:absolute;left:28%"></i>
+<h2 style="text-align:center">CREATE NEW USER (RENTER)</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="scroller">
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="col-md-4">First name</label>
+                <div class="row-cols-2">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-4">Last name</label>
+                <div class="row-cols-2">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4">Email</label>
+                <div class="row-cols-2">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4">Password</label>
+                <div class="row-cols-2">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4">Phone number</label>
+                <div class="row-cols-2">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4">Aadhar number</label>
+                <div class="row-cols-2">
+                    @Html.EditorFor(model => model.AadharNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AadharNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5" align="right">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<button class="btn btn-md btn-info" id="btn" onclick="location.href = '@Url.Action("Index","AdminRenter")'">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Back
+</button>

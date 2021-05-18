@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mail</title>
+
+    <style>
+
+        .btn {
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        /* Green */
+        .success {
+            border-color: #4CAF50;
+            color: green;
+        }
+
+            .success:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+
+        .bg-overlay {
+            background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("../../Icons/Getmyhouse.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            color: #fff;
+            height: 100%;
+            padding-top: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* Preserve aspet ratio */
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .wrapper {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: auto;
+            width: 35%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    
+        <div class="container bg-overlay">
+
+            <div class="wrapper">
+
+                <h3>Your mail ID is not registered.So please register to continue.</h3>
+
+            </div><br><br><br>
+            <div style="text-align:center">
+                <button class="btn success" onclick="location.href='RegisterRenter'">Register</button>
+            </div>
+        </div>
+   
+
+</body>
+
+
+</html>

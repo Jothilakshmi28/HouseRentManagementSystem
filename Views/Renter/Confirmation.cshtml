@@ -1,0 +1,48 @@
+﻿@model HouseRentManagementSystem.Models.Sold_Property
+
+@{
+    ViewBag.Title = "Confirmation";
+
+}
+
+<h2 style="text-align:center">CONFIRMATION TO RENT A PROPERTY</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" align="center">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <label class="col-sm-10">Advance Payment</label>
+            <div class="row-cols-3">
+                @Html.EditorFor(model => model.deposit_amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.deposit_amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-9">Rent</label>
+            <div class="row-cols-3">
+                @Html.EditorFor(model => model.rent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.rent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<button class="btn btn-sm btn-info" id="btn" onclick="location.href = '@Url.Action("Index")'">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Back
+</button>

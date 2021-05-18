@@ -1,0 +1,193 @@
+﻿@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style >
+        .logo {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+        }
+        </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="    ~/Content/
+vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="    ~/Content/
+vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="    ~/Content/
+css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="    ~/Content/
+css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="    ~/Content/
+css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+
+
+    <div class="page">
+        <!-- Main Navbar-->
+        <header class="header">
+            <nav class="navbar">
+
+
+                <!-- Logout    -->
+                <ul>
+
+
+
+
+
+                    <li>
+                    <a class="dropdown-item" href="~/Admin/Logout"> <span class="glyphicon glyphicon-log-out"></span>&nbsp; Log Out</a>
+              </li>  </ul>
+            </nav>
+
+
+        </header>
+        <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav class="side-navbar">
+
+
+                <ul class="list-unstyled">
+                    <li class="active"><a href="index.html"> Home </a></li>
+
+                    <li>
+                        <h4>Tenant</h4>
+                        <ul>
+                            <li><a href="~/AdminTenant/Index"> Tenant Details  </a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="content" tabindex="1"> <h4>Renter</h4></div>
+                        <div class="hide">
+                            <ul>
+                              
+                                <li><a href="~/AdminRenter/Index"> Renter Details  </a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>
+                            Properties
+                        </h4><ul>
+                           
+                            <li><a href="~/AdminProperty/Index"> Properties detail </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Dashboard</h2>
+                    </div>
+                </header>
+                <!-- Dashboard Counts Section-->
+                <section class="dashboard-counts no-padding-bottom">
+                    <div class="container-fluid">
+                        <div class="row bg-white has-shadow">
+                            <!-- Item -->
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-violet"><i class="fa fa-home"></i></div>
+                                    <div class="title">
+                                        <span>Total<br>Property</span>
+                                        
+                                    </div>
+                                    <div class="number"><strong>
+   
+    @ViewBag.PropertyCount 
+                                </strong></div>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-red"><i class="fa fa-user"></i></div>
+                                    <div class="title">
+                                        <span>Total<br>Renters</span>
+                                        
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.RenterCount</strong></div>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-green"><i class="fa fa-user-o"></i></div>
+                                    <div class="title">
+                                        <span>Total<br>Tenants</span>
+                                       
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.TenantCount</strong></div>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-orange"><i class="icon-check"></i></div>
+                                    <div class="title">
+                                        <span>Sold/Rented Houses</span>
+                                       
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.SoldCount</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+<img src="~/Icons/logo.png" class="logo" />
+    <!-- JavaScript files-->
+    <script src="    ~/Content/
+vendor/jquery/jquery.min.js"></script>
+    <script src="    ~/Content/
+vendor/popper.js/umd/popper.min.js"></script>
+    <script src="    ~/Content/
+vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="    ~/Content/
+vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="    ~/Content/
+vendor/chart.js/Chart.min.js"></script>
+    <script src="    ~/Content/
+vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="    ~/Content/
+js/charts-home.js"></script>
+    <!-- Main File-->
+    <script src="    ~/Content/
+js/front.js"></script>
+</body>
+</html>

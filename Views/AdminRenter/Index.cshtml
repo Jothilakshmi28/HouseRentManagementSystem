@@ -1,0 +1,191 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.Renter>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<link href="~/Content/user/fontawesome.css" rel="stylesheet" type="text/css">
+<link href="~/Content/user/fontawesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css" />
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fontawesome.com/icons?d=gallery&p=2" rel="stylesheet">
+<style>
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+        bottom: 0.5em;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+    }
+
+    #btn {
+        border: 2px solid black;
+        background-color: cornflowerblue;
+        color: black;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 15px;
+    }
+
+    /* Green */
+
+    .primary {
+        border-color: black;
+        color: white;
+    }
+
+
+    table {
+        border-radius: 15px;
+    }
+
+    th {
+        text-align: center;
+        color: azure;
+    }
+</style>
+<script>
+    //searching
+    $(document).ready(function () {
+        $("#tableSearch").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    //sorting
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "ordering": true,
+            columnDefs: [
+                {
+                    orderable: false, targets: "no-sort"
+                }
+            ]
+
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+
+
+<h2 style="text-align:center">Admin Renter Page</h2>
+
+
+<button class="btn primary" id="btn" style="float:right" onclick="location.href='Create'">Create new</button>
+<br>
+
+<br>
+
+@*<input class="form-control mb-4" style="float:right" id="tableSearch" type="text" placeholder="Search..">*@
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <br>
+
+    <br>
+
+    <table class="table table-bordered table-striped mb-0" id="myTable">
+        <thead class="bg bg-dark">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Password
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Aadhar Number
+                </th>
+
+                <th class="no-sort">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AadharNumber)
+                    </td>
+                    <td align="center">
+                        <button class="btn btn-warning" name="Edit"
+                                onclick="location.href='@Url.Action("Edit", new { id = item.Id})'">
+                            Edit
+                        </button>
+                        <button class="btn btn-primary" name="Details"
+                                onclick="location.href='@Url.Action("Details", new { id = item.Id})'">
+                            Details
+                        </button>
+                        <button class="btn btn-danger" name="Delete"
+                                onclick="location.href='@Url.Action("Delete", new { id = item.Id})'">
+                            Delete
+                        </button>
+
+                    </td>
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+</div>
+<img src="~/Icons/logo.png" class="logo" />

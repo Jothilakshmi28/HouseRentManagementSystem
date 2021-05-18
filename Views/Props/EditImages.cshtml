@@ -1,0 +1,123 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.Prop>
+
+@{
+    ViewBag.Title = "EditImages";
+    Layout = null;
+}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+
+    #close {
+        z-index: 5;
+    }
+
+    .img-wrap {
+        position: relative;
+        display: inline-block;
+        border: 1px red solid;
+        font-size: 0;
+    }
+
+        .img-wrap .close {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            z-index: 100;
+            background-color: #FFF;
+            padding: 5px 2px 2px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: .2;
+            text-align: center;
+            font-size: 22px;
+            line-height: 10px;
+            border-radius: 50%;
+            opacity: 2;
+        }
+
+        .img-wrap:hover .close {
+            opacity: 1;
+        }
+</style>
+@using (Html.BeginForm("EditImages", "Props", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+
+    <div class="form-group">
+
+        <div class="col-sm">
+            <input type="button" class="btn-info" id="image1" value="Add new images">
+            <input type="file" class="hidden" name="image" id="image" multiple>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+
+        <div class="col-md-offset-2 col-md-10">
+
+            <h4>
+                Click here to save added image(s)
+
+                <input type="submit" value=" Save " class="btn btn-dark" />
+            </h4>
+        </div>
+
+    </div>
+}
+<script>
+    $(function () {
+        $('#image1').on('click', function () {
+            $('#image').click();
+        });
+    });</script>
+
+@foreach (var item in Model)
+{
+
+    var image = item.Images1;
+    if (image.Count > 0)
+    {
+
+
+        for (int i = 0; i < image.Count; i++)
+        {
+
+            var base64 = Convert.ToBase64String(image[i].PropertyImage);
+            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+            <div class="img-wrap">
+                <span class="close" onclick="location.href = '@Url.Action("RemoveImages", "Props", new {id=image[i].Id })'">&times;</span>
+                <img src="@imgsrc" style="width:150px; height:150px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+        }
+
+
+    }
+    <br><br><br>
+    <div class="col-10">
+
+        <button type="button" class="btn btn-info" onclick="location.href = '@Url.Action("Edit", "Props", new { id = item.Id })'">
+            Back
+        </button>
+    </div>
+}

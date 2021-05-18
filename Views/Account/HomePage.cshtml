@@ -1,0 +1,776 @@
+﻿
+@{
+    ViewBag.Title = "HomePage";
+      Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+
+
+
+
+
+
+    <style>
+        .contact-item
+        {
+            text-align:center;
+            align-content:center;
+        }
+        :root {
+            --transition: all 0.7s ease;
+            --yellow: #f9d342;
+            --dark: #292826;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        .btn {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            width: 140px;
+            display: block;
+            margin: 15px auto;
+            margin-right:50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .btn:hover {
+                opacity: 0.85;
+            }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            padding: 8px 0;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+
+        /* header */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("images/banner-img.jpg") center/cover no-repeat;
+            min-height: 100vh;
+            color: #fff;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-content: stretch;
+        }
+
+        .head-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .head-top span {
+                cursor: pointer;
+                letter-spacing: 2px;
+                transition: var(--transition);
+            }
+
+                .head-top span:hover {
+                    color: var(--yellow);
+                }
+
+        .head-bottom {
+            flex: 1;
+            text-align: center;
+            width: 80vw;
+            margin: 0 auto;
+        }
+
+            .head-bottom h2 {
+                padding: 22px 0;
+                font-size: 45px;
+                border-bottom: 1px solid #fff;
+            }
+
+            .head-bottom p {
+                opacity: 0.7;
+                font-size: 20px;
+                margin: 45px auto;
+                width: 60vw;
+            }
+
+        .head-btn {
+            margin: 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+            border: 3px solid #fff;
+            background: transparent;
+            padding: 13px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .head-btn {
+            font-size: 17px;
+        }
+
+        .sidenav {
+            width: 100vw;
+        }
+
+
+
+        .head-btn:hover {
+            background: transparent;
+        }
+
+        .head-bottom h2 {
+            font-size: 28px;
+        }
+
+        .head-bottom p {
+            font-size: 17px;
+            margin: 20px auto;
+        }
+
+
+
+        /* side nav */
+        .sidenav {
+            background: var(--dark);
+            color: #fff;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: -100%;
+            width: 300px;
+            padding: 20px;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+            /********/
+            .sidenav.show {
+                right: 0;
+            }
+        /*************/
+        .cancel-btn {
+            position: absolute;
+            right: 25px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .cancel-btn:hover {
+                opacity: 0.7;
+            }
+
+        .navbar {
+            margin-top: 50px;
+            list-style: none;
+            padding: 12px;
+        }
+
+            .navbar li a {
+                color: #fff;
+                text-transform: capitalize;
+                text-decoration: none;
+                padding: 15px 0;
+                display: block;
+                border-bottom: 0.5px solid rgba(249, 211, 66, 0.3);
+                opacity: 0.8;
+                letter-spacing: 1.5px;
+                transition: var(--transition);
+            }
+
+                .navbar li a:hover {
+                    padding-left: 12px;
+                }
+
+        .sign-up, .log-in {
+            background: var(--yellow);
+            color: #fff;
+        }
+
+
+        /** title */
+        .title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 30px;
+            color: var(--yellow);
+            border-bottom: 5px solid var(--dark);
+            width: 235px;
+            margin: 15px 0;
+        }
+
+        .sec-width {
+            width: 85vw;
+            margin: 0 auto !important;
+        }
+
+        /* service */
+        .services {
+            margin: 40px 0;
+        }
+
+        .service {
+            display: flex;
+            margin: 30px 0;
+        }
+
+        .service-icon {
+            flex: 30%;
+            align-self: flex-start;
+            font-size: 48px;
+            color: #252525;
+        }
+        /*
+        .service-content{
+            padding-left: 20px;
+        }*/
+        .service-content h2 {
+            opacity: 0.7;
+            font-size: xx-large;
+        }
+
+        .service-content p {
+            font-size: medium;
+        }
+
+        .service-content button {
+            margin-left: 0;
+            margin-right: 0;
+            background: var(--yellow);
+            color: #fff;
+        }
+
+
+        .title h2 {
+            font-size: 10px !important;
+        }
+        /* customers */
+
+        .customers {
+            margin-top: 40px;
+            padding: 40px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/customer-banner.jpg") center/cover no-repeat fixed;
+        }
+
+        .customer {
+            background: #fff;
+            padding: 35px;
+            text-align: center;
+            margin: 24px 0;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .rating {
+            margin: 10px 0;
+            color: var(--yellow);
+        }
+
+        .customer h3 {
+            font-size: 25px;
+        }
+
+        .customer p {
+            opacity: 0.7;
+            line-height: 1.8;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .customer img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            margin: 25px auto;
+        }
+
+        .customer span {
+            font-weight: 700;
+            opacity: 0.7;
+        }
+
+        .customer:hover {
+            transform: translateY(-18px);
+        }
+
+        media(min-width: 992px) .customers-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+        }
+
+        media(min-width: 1370px).customers-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        media(max-width: 500px) .customer p {
+            width: 100%;
+        }
+
+        .customer img {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* footer */
+        .footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-container {
+            width: 85vw;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+            .footer-container p, .footer-container a, .footer-container span {
+                opacity: 0.8;
+            }
+
+        .footer a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+            .social-icons li {
+                margin: 0 10px;
+                width: 50px;
+                height: 50px;
+                background: #2e2e2e;
+                border-radius: 50%;
+                transition: var(--transition);
+                cursor: pointer;
+            }
+
+                .social-icons li:hover {
+                    background: #fff;
+                    color: #2e2e2e;
+                }
+
+        .contact-item span {
+            display: block;
+        }
+
+        @@media(min-width: 900px) {
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 20px;
+            }
+        }
+        @@media(min-width: 1170px) {
+            .footer {
+                text-align: left;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+                .footer-container div:nth-child(1) p {
+                    padding-right: 20px;
+                }
+        }
+
+        .li {
+            display: inline;
+        }
+
+        .contact-item {
+            display: block;
+            grid-template-columns: 10% 90%;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        
+        .showModal {
+            position: fixed;
+            background: transparent;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- header -->
+    <header class="header" id="header">
+        <div class="head-top">
+
+
+            <div class="navbar-brand">
+                <a class="navbar-sidebar" href="#"><img src="~/Icons/Getmyhouse.jpg" height="60" width="20"></a>
+            </div>
+
+            <div class="site-nav">
+                <span id="nav-btn"> <i class="fas fa-bars "></i></span>
+            </div>
+        </div>
+
+        <div class="head-bottom flex">
+            <h2>CHOOSE A HOUSE THAT SUITS YOU</h2>
+            <p>India's No.1 Online House Rental Application.<br> We serve a good support to both the renter and tenant by providing 24/7 services.</p>
+            <button type="button" id="getstarted"class="head-btn">GET STARTED</button>
+        </div>
+    </header>
+    <!-- end of header -->
+    <!-- side navbar -->
+    <div class="sidenav" id="sidenav">
+        <span class="cancel-btn" id="cancel-btn">
+            <i class="fas fa-times"></i>
+        </span>
+
+        <ul class="navbar" style="display:block">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#rooms">Gallery</a></li>
+            <li><a href="#customers">Our Happy customers</a></li>
+        </ul>
+        <button class="btn sign-up" id="signup" style="margin:0 25% ">
+            Sign up
+        </button><br><br />
+        <button class="btn log-in" id="login" style="margin:0 25%">
+            Login
+        </button>
+    </div>
+    <!-- end of side navbar -->
+    <!-- fullscreen modal -->
+    <div id="modal"></div>
+    <!-- end of fullscreen modal -->
+    <!-- body content  -->
+    <section class="services sec-width" id="services">
+        <div class="title">
+            <h2>services</h2>
+        </div>
+        <div class="services-container">
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-home"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>Home Rental</h2>
+                    <p>We provide our customers a plenty of choices on choosing their dream house for rental purpose. The customer can also act as both tenant(who offers an house for rent) and renter(who pays the rent for house)</p>
+
+                </div>
+            </article>
+            <!-- end of single service -->
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-rupee-sign"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>Save Money</h2>
+                    <p>Avoid paying extra money to broker. We give you the details of renter, so you can contact directly with the renter. So better understanding and approach will be done between the renter and the customer. </p>
+                </div>
+            </article>
+            <!-- end of single service -->
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-clock"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>24/7 Availability</h2>
+                    <p>We assure that our services will be available all the 365 days with 24/7 availability. Our main goal is to make our customers to feel satisfied with our services and to make them feel free to seek assist.</p>
+                </div>
+            </article>
+            <!-- end of single service -->
+                   </div>
+    </section>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            .carousel-inner > .item > img,
+            .carousel-inner > .item > a > img {
+                width: 70%;
+                margin: auto;
+            }
+        </style>
+   
+    <section class="rooms sec-width" id="rooms">
+        <div class="container">
+            <div class="title">
+                <h2>Our gallery</h2>
+            </div>
+            <div id="myCarousel" class="carousel slide">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li class="item1 active"></li>
+                    <li class="item2"></li>
+                    <li class="item3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="item active">
+                        <img src="~/Icons/img1.jpg" alt="Chania" width="460" height="345">
+                        <div class="carousel-caption">
+
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Icons/img2.jpg" alt="Chania" width="460" height="345">
+                        <div class="carousel-caption">
+
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Icons/img3.jpg" alt="Flower" width="460" height="345">
+                        <div class="carousel-caption">
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                // Activate Carousel
+                $("#myCarousel").carousel();
+
+                // Enable Carousel Indicators
+                $(".item1").click(function () {
+                    $("#myCarousel").carousel(0);
+                });
+                $(".item2").click(function () {
+                    $("#myCarousel").carousel(1);
+                });
+                $(".item3").click(function () {
+                    $("#myCarousel").carousel(2);
+                });
+               
+
+                // Enable Carousel Controls
+                $(".left").click(function () {
+                    $("#myCarousel").carousel("prev");
+                });
+                $(".right").click(function () {
+                    $("#myCarousel").carousel("next");
+                });
+            });
+        </script>
+</section>
+    
+
+<section class="customers" id="customers">
+    <div class="sec-width">
+        <div class="title">
+            <h2>Customers</h2>
+        </div>
+        <div class="customers-container">
+            <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                </div>
+                <h3>We Loved it</h3>
+                <p>Always getting good service from getMyhouse whatever the place is I'll always rent through getMyhouse app. Thank you for this.
+             </p>
+                <img src="~/Icons/cus1.jpg" alt="customer image">
+                <span>Jack William</span>
+            </div>
+            <!-- end of single customer -->
+            <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                </div>
+                <h3>Comfortable Living</h3>
+                <p >It is same as we see in this webpage images.</p>
+                <img src="~/Icons/cus2.jpg" alt="customer image">
+                <span>Rose</span>
+            </div>
+            <!-- end of single customer -->
+            <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                </div>
+                <h3>Nice Place</h3>
+                <p>Many houses of various types are available, helped me a lot as I were new to this place getMyhouse helped me to rent a house easily. </p>
+                <img src="~/Icons/cus3.jpg" alt="customer image">
+                <span>Thomas</span>
+            </div>
+            <!-- end of single customer -->
+        </div>
+    </div>
+</section>
+<!-- end of body content -->
+<!-- footer -->
+<footer class="footer">
+    <div class="aa-footer-middle" align="center">
+        <div align="center">
+            <h2>About Us </h2>
+            <p style="text-align:center ; font-size:medium">We are working on this since 2016 and more than 8000 satisfied customers are there.<br> Our scope is to do more for making our client happy!</p>
+            <h3 style="opacity:0.7">HAPPY HOMING!</h3>
+        </div>
+
+    </div>
+    <div class="aa-footer-middle"  align="right">
+        <div align="center">
+            <h2>Have A Question?</h2>
+            <div class="contact-item">
+                <span>
+                    <i class="fas fa-map-marker-alt"></i>
+
+                    203 Fake St.Mountain View, Salem, TamilNadu, India.
+                </span>
+            </div>
+            <div class="contact-item">
+                <span>
+                  &#9742;
+                    90000 90000
+                </span>
+            </div>
+            <div class="contact-item">
+                <span>
+                    <i class="fas fa-envelope"></i>
+
+                    getMyhouse@gmail.com
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end of footer-->
+
+<script>
+    document.getElementById("signup").onclick = function () {
+        location.href = "/Account/RegisterRenter";
+    }
+    document.getElementById("login").onclick = function () {
+        location.href = "/Account/LoginRenter";
+    }
+    const getstarted = document.getElementById('getstarted');
+    const navBtn = document.getElementById('nav-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const sideNav = document.getElementById('sidenav');
+    const modal = document.getElementById('modal');
+
+    navBtn.addEventListener("click", function () {
+        sideNav.classList.add('show');
+        modal.classList.add('showModal');
+    });
+
+    getstarted.addEventListener("click", function () {
+        sideNav.classList.add('show');
+        modal.classList.add('showModal');
+    });
+
+    cancelBtn.addEventListener('click', function () {
+        sideNav.classList.remove('show');
+        modal.classList.remove('showModal');
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            sideNav.classList.remove('show');
+            modal.classList.remove('showModal');
+        }
+    });
+</script>
+</body>
+</html>

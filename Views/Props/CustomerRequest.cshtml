@@ -1,0 +1,129 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.Tenant>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+<style>
+
+    .head {
+        background-color: black;
+        color: gray;
+    }
+
+    .btn {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Green */
+    .success {
+        border-color: #04AA6D;
+        color: green;
+    }
+
+        .success:hover {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+    .danger {
+        border-color: #f44336;
+        color: red
+    }
+
+        .danger:hover {
+            background: #f44336;
+            color: white;
+        }
+</style>
+<body>
+    <h3 style="text-align:center">CUSTOMER'S REQUEST</h3>
+    <br><br>
+    <table class="table table-hover">
+
+        <tr class="head">
+
+            <th>
+               Property Name
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+
+                Last Name
+            </th>
+            <th>
+
+
+
+                Email
+            </th>
+            <th>
+
+                Password
+
+            </th>
+
+            <th>
+
+                Phone Number
+            </th>
+            <th>
+
+                Aadhar Number
+            </th>
+            <th style="text-align:center">
+
+                Action
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AadharNumber)
+                </td>
+                <td>
+                    <div class="accordion" style="text-align:right">
+
+                        <button type="button" class="btn success" name="button" value="Accept">
+                            @Html.ActionLink("Accept", "Confirmation", new { cid = item.Id })
+                        </button>
+                        <button type="button" class="btn danger " name="button" value="Reject">
+                            @Html.ActionLink("Reject", "Rejection", new { cid = item.Id })
+
+                        </button>
+                    </div>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    </body>

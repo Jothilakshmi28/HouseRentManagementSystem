@@ -1,0 +1,241 @@
+﻿@model HouseRentManagementSystem.Models.Prop
+
+@{
+    Layout = null;
+}
+
+
+
+<head>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</head>
+<style>
+
+
+    .logo {
+        position: fixed;
+        bottom: 0;
+        right: 10px;
+        width: 100px;
+        height: 100px;
+    }
+
+    button {
+        position: relative;
+    }
+
+    #edit {
+        z-index: 5;
+    }
+
+    .img-wrap {
+        position: relative;
+        display: inline-block;
+        font-size: 0;
+    }
+
+        .img-wrap #edit {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            z-index: 100;
+            padding: 8px;
+            color: white;
+            font-weight: bolder;
+            cursor: pointer;
+            opacity: .2;
+            text-align: center;
+            font-size: 35px;
+            line-height: 10px;
+            border-radius: 50%;
+            opacity: 2;
+        }
+
+        .img-wrap:hover #edit {
+            opacity: 1;
+        }
+
+
+
+
+
+    .panel-body {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .form-horizontal {
+        margin: auto;
+        width: 45%;
+    }
+
+    
+
+    h3 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .scroller {
+        height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    #image1 {
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #03b1ce;
+    }
+
+    #btn {
+        left: 20%;
+        position: absolute;
+    }
+</style>
+<body>
+
+    <i class="fas fa-home" style="font-size:50px;position:absolute;left:30%"></i>
+    <h2 style="text-align:center">EDIT PROPERTY</h2>
+
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="scroller">
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="col-md-4">Property name</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.PropertyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PropertyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-4">BHK type</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.BHK_type, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BHK_type, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">House type</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.House_type, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.House_type, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">Address line 1</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.Address_Line1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address_Line1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">Address line 2</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.Address_Line2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address_Line2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">City</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">State</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">Rent</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.Rent, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Rent, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4">Add Images</label>
+                    <div class="row-cols-2">
+                        <input type="file" name="images" id="images" multiple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4">Square feet</label>
+                    <div class="row-cols-2">
+                        @Html.EditorFor(model => model.SquareFeet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SquareFeet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.SellerID)
+            <div class="form-group">
+                <label class="col-md-4">Availability</label>
+                <select name="avail">
+                  
+                    <option value="Available">Available</option>
+                    <option value="Not Available">Not Available</option>
+                </select>
+            </div>
+                <div class="form-group">
+                    <div class="col-md-5" align="right">
+                        <input type="submit" value="Save changes" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <button class="btn btn-md btn-info" id="btn" onclick="location.href = '@Url.Action("Index","AdminProperty")'">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back
+    </button>
+
+    <img src="~/Icons/logo.png" class="logo" />
+
+</body>

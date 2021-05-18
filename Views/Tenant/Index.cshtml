@@ -1,0 +1,230 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.Tenant>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    <br>
+}   <h3 style="        text-align: center;
+        font-family: Garamond;
+        text-decoration: double;
+        text-emphasis: dot">
+    MY PROFILE
+</h3>
+<br><br>
+
+
+    <head>
+
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <style>
+            .logo {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+            }
+
+            .styled-table {
+                width: 50%;
+                margin-left: 15%;
+                margin-right: 15%;
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .btn {
+                left: 20%;
+                position: absolute;
+            }
+
+            .styled-table {
+                margin: 0 auto;
+            }
+
+                .styled-table th {
+                    background-color: #37474f;
+                    color: #ffffff;
+                    text-align: left;
+                }
+
+                .styled-table td {
+                    background-color: white;
+                    color: black;
+                    text-align: left;
+                }
+
+                .styled-table th,
+                .styled-table td {
+                    padding: 12px 15px;
+                }
+
+                .styled-table tbody tr {
+                    border-bottom: 1px solid chartreuse;
+                }
+
+                    .styled-table tbody tr:nth-of-type(even) {
+                        background-color: chartreuse;
+                    }
+
+                    .styled-table tbody tr:last-of-type {
+                        border-bottom: 1px solid chartreuse;
+                    }
+
+                    .styled-table tbody tr.active-row {
+                        font-weight: bold;
+                        color: #009879;
+                    }
+
+            table {
+                border: 4px solid chartreuse;
+            }
+        </style>
+    </head>
+
+<body>
+    <div class="table-responsive-md">
+
+        <table class="styled-table">
+
+            @foreach (var item in Model)
+            {
+                <tbody>
+
+                    <tr>
+                        <th>
+                            First name
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+
+                        </td>
+                </tbody>
+                <tbody>
+
+                    <tr>
+                        <th>
+                            Last name
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+
+
+                        </td>
+                </tbody>
+                <tbody>
+
+                    <tr>
+                        <th>
+                            Email
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                </tbody>
+                <tbody>
+
+                    <tr>
+                        <th>
+                            Password
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                </tbody>
+                <tbody>
+
+                    <tr>
+                        <th>
+                            Phone number
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                </tbody>
+                <tbody>
+
+                    <tr>
+                        <th>
+                            Aadhar number
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AadharNumber)
+                        </td>
+                </tbody>
+                <tbody>
+
+                    <tr>
+                        <th>
+                            Profile Image
+                        </th>
+                        <td>
+                            @{
+
+                                // if (ViewBag.image != null)
+                                if (TempData["userimage"] != null)
+                                {
+
+                                    <!--<input id="image" name="image" class="hidden" type="file" hidden>-->
+                                    //TempData["userimage"] = Convert.ToBase64String(obj.ProfileImage);
+
+                                    var base64 = TempData["userimage"];
+
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    Session["base64"] = base64;
+
+                                    <img src="@imgsrc" style="height:150px; width:150px;">
+
+                                }
+
+                                // string base64 = Convert.ToString(Session["Image"]);
+
+                                else
+                                {
+                                    <img src="~/Icons/avatar.png" style="height:150px; width:150px;">
+
+                                }
+                            }
+
+
+                        </td>
+
+
+                    </tr>
+                </tbody>
+
+
+            }
+
+        </table>
+        <img src="~/Icons/logo.png" class="logo" />
+    </div>
+    <br><br>
+    <button class="btn btn-md btn-info" onclick="location.href = '@Url.Action("IndexTenant","Account")'">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back
+    </button>
+</body>

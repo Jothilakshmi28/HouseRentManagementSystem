@@ -1,0 +1,483 @@
+﻿@model IEnumerable<HouseRentManagementSystem.Models.Prop>
+
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = null;
+}
+<head>
+
+
+
+    <link rel="canonical" href="http://www.demo.freshdesignweb.com/web-hosting-templates-css3/" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10146041-25"></script>
+    <style>
+
+        .bg-custom-1 {
+            background-color: #85144b;
+        }
+
+        .bg-custom-2 {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+        }
+
+        body {
+            background: linear-gradient(white,gray);
+        }
+
+        article {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 330px !important;
+            border: solid;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-bottom: 150px;
+        }
+
+
+        article {
+            border-left: 1px dotted #97d947;
+            font-size: 18px;
+            color: #333;
+            border: 3px solid #97d947;
+            height: 316px;
+            width: 236px;
+            margin-top: 0;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 15px;
+        }
+
+            article hover {
+                -webkit-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                -moz-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                box-shadow: 3px 1px 25px 7px black;
+            }
+
+        .d-grid {
+            margin-left: -0.8rem !important;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Font awesome -->
+    <link href="~/Content/user/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/user/css/bootstrap.css" rel="stylesheet">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/user/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/user/css/nouislider.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/Content/user/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/user/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="~/Content/user/css/style.css" rel="stylesheet">
+
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+    <link src="https://fonts.googleapis.com/css?family=Roboto:400,500,300,700" type="text/css">
+    <link src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+        }
+
+        /* *{
+              align-items: center;
+            justify-content: center;
+
+            margin: 0;
+            padding: 0;
+            align-content:center;
+        }*/
+        /*   #aa-latest-property article
+
+        {
+            height: 320px;
+            margin: 0;
+            padding: 0;
+        }*/
+        #request {
+            color: white;
+        }
+
+        #btn {
+            left: 5%;
+            position: absolute;
+        }
+
+        #aa-latest-property {
+            /* The image used */
+            display: block;
+            background-image: url("/Icons/bg_2.jpg");
+            /* Set a specific height */
+            min-height: 500px;
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: repeat;
+            background-size: cover;
+        }
+
+        #btnSubmit {
+            float: right;
+        }
+
+        #search, .dropdown {
+            float: right;
+            margin-right: 7px;
+        }
+
+        #search, #btnSubmit {
+            /* -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;*/
+            outline: none;
+            padding: 6px;
+            margin: 6px;
+            border: 2px solid #DDDDDD;
+            border-radius: 5px;
+        }
+
+        .container #search {
+            height: auto;
+            width: 100%;
+        }
+
+        #search:focus, #btnSubmit {
+            box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+            padding: 6px;
+            margin: 6px;
+            border: 1px solid rgba(81, 203, 238, 1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mySlides {
+            display: none;
+        }
+        /* demo styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+        html {
+            overflow: auto;
+        }
+
+        body {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            bottom: 20px;
+            right: 20px;
+            padding: 30px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        /* Let's get this party started */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: linear-gradient(black,#97d947);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        }
+
+            ::-webkit-scrollbar-thumb:window-inactive {
+                background: rgba(255,0,0,0.4);
+            }
+        /*
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+                 */
+        article {
+            display: inline-grid;
+            margin-left: 5%;
+            margin-right: 2%;
+            width: 300px !important;
+            border: solid;
+            margin-top: 20px;
+            margin-bottom: 200px;
+        }
+
+
+        article {
+            border-left: 1px dotted #97d947;
+            font-size: 14px;
+            color: #333;
+            border: 3px solid #97d947;
+            height: 316px;
+            width: 236px;
+            margin-top: 0;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 15px;
+        }
+
+            article hover {
+                -webkit-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                -moz-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                box-shadow: 3px 1px 25px 7px black;
+            }
+
+        .d-grid {
+            margin-left: -0.8rem !important;
+        }
+    </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: 'AutoComplete',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hfCustomer").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+    </script>
+</head>
+<img src="~/Icons/logo.png" class="logo" />
+<div class="dropdown" align="right">
+    <button class="btn btn-secondary dropdown-toggle" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" align="center" aria-labelledby="dropdownMenuButton">Price range</button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownmenulink">
+        <li> @Html.ActionLink("Below 5000", "PriceRange", "Props", new { min = 1000, max = 4999 }, new { @class = "dropdown-item fa fa-rupee", style = "color:gray;font-weight:bold;font-size:medium;" })</li>
+        <li> @Html.ActionLink("5000-10000", "PriceRange", "Props", new { min = 5000, max = 10000 }, new { @class = "dropdown-item fa fa-rupee", style = "color:gray;font-weight:bold;font-size:medium;" })</li>
+        <li>  @Html.ActionLink("10000-15000", "PriceRange", "Props", new { min = 10000, max = 15000 }, new { @class = "dropdown-item fa fa-rupee", style = "color:gray;font-weight:bold;font-size:medium;" })</li>
+        <li>  @Html.ActionLink("15000-20000", "PriceRange", "Props", new { min = 15000, max = 20000 }, new { @class = "dropdown-item fa fa-rupee", style = "color:gray;font-weight:bold;font-size:medium;" })</li>
+        <li>  @Html.ActionLink("20000-25000", "PriceRange", "Props", new { min = 20000, max = 25000 }, new { @class = "dropdown-item fa fa-rupee", style = "color:gray;font-weight:bold;font-size:medium;" })</li>
+        <li>  @Html.ActionLink("Above 25000", "PriceRange", "Props", new { min = 25000, max = 25000 }, new { @class = "dropdown-item fa fa-rupee", style = "color:gray;font-weight:bold;font-size:medium;" })</li>
+
+    </ul>
+</div>
+
+<div class="dropdown" align="center">
+    <button class="btn btn-primary dropdown-toggle" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" align="center" aria-labelledby="dropdownMenuButton">Sort by</button>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownmenulink">
+
+        <li> @Html.ActionLink("Price - Low to high", "Sort", "Props", new { price = 1 }, new { @class = "dropdown-item fa fa-rupee", style = "color:cadetblue;font-weight:bold;font-size:medium;" })</li>
+        <li>  @Html.ActionLink("Price - High to Low", "Sort", "Props", new { price = 2 }, new { @class = "dropdown-item fa fa-rupee", style = "color:cadetblue;font-weight:bold;font-size:medium;" })</li>
+    </ul>
+</div>
+
+@using (Html.BeginForm("Search", "Props", FormMethod.Post))
+{
+    <div class="container">
+        <input type="search" id="search" name="search" placeholder="Search location" />
+        <button style="font-size:medium;color:cadetblue;background-color:white;" type="submit" id="btnSubmit">&nbsp;<i class="fas fa-search">&nbsp;&nbsp;</i></button>
+
+    </div>
+}
+
+
+<br>
+<br>
+
+<body>
+
+    <section id="aa-latest-property">
+        <div class="container">
+
+
+            <div class="d-grid gap-3">
+
+                @foreach (var item in Model)
+                {
+                    var image = item.Images1;
+
+
+                    <article class="aa-properties-item">
+                        <a href="#" class="aa-properties-item-img">
+
+
+
+
+                            @for (int j = 0; j < 1; j++)
+                            {
+
+                                if (item.Images1 != null)
+                                {
+                                    var base64 = Convert.ToBase64String(image[j].PropertyImage);
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <img src="@imgsrc"style="height:200px;max-height:200px" />
+
+                                }
+                            }
+
+                            <div class="aa-tag for-rent">
+                                For Rent
+                            </div>
+                            <div class="aa-properties-item-content">
+                                <div class="aa-properties-info">
+                                    <span>@item.House_type</span>
+                                    <span>@item.BHK_type</span>
+                                    <span>@item.SquareFeet sq.ft</span>
+                                </div>
+                                <div class="aa-properties-about">
+                                    <h3><a href="#">@item.PropertyName</a></h3>
+                                    <p>This is a @item.BHK_type @item.House_type of @item.SquareFeet (Sq.ft.) in @item.city city at @item.state</p>
+                                </div>
+                                <div class="aa-properties-detial">
+                                    <span class="aa-price">
+                                        <span>&#8377;</span> @item.Rent
+                                    </span>
+                                    <a href="/Props/Details/@item.Id" class="aa-search-btn" style="color:orange">View Details</a>
+                                    <br>
+                                    <br>
+                                </div>
+
+
+                                <button id="request" class="btn btn-block btn-success " type="button"
+                                        name="Request"
+                                        onclick="location.href = '@Url.Action("UserIndexs","Props", new { id = item.Id, sid = item.SellerID })'">
+                                    REQUEST
+
+                                </button>
+
+                            </div>
+                        </a>
+
+
+
+
+                    </article>
+
+
+
+
+
+
+                }
+                <br>
+
+
+            </div>     <br>
+
+
+            <div></div>
+
+
+
+        </div>
+    </section>
+
+</body>
+<br>
+<button class="btn btn-md btn-info" onclick="location.href = '@Url.Action("IndexTenant","Account")'">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Back
+</button>

@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="RenterCount" Type="int" />
+          <Property Name="TenantCount" Type="int" />
+          <Property Name="PropertyCount" Type="int" />
+          <Property Name="PropertiesSold" Type="int" />
+        </EntityType>
+        <EntityType Name="BHK_type">
+          <Key>
+            <PropertyRef Name="bhk_id" />
+          </Key>
+          <Property Name="bhk_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bhk_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="cityid" />
+          </Key>
+          <Property Name="cityid" Type="int" Nullable="false" />
+          <Property Name="cityname" Type="varchar" MaxLength="50" />
+          <Property Name="stateid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyImage" Type="varbinary(max)" />
+          <Property Name="PropertyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceRange">
+          <Key>
+            <PropertyRef Name="PriceID" />
+          </Key>
+          <Property Name="PriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="PropertyName" Type="varchar" MaxLength="200" />
+          <Property Name="BHK_type" Type="varchar" MaxLength="200" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="House_type" Type="varchar" MaxLength="50" />
+          <Property Name="Address_Line1" Type="varchar" MaxLength="100" />
+          <Property Name="Address_Line2" Type="varchar" MaxLength="100" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="Rent" Type="smallmoney" />
+          <Property Name="SellerID" Type="int" />
+          <Property Name="Availability" Type="varchar" MaxLength="50" />
+          <Property Name="SquareFeet" Type="int" />
+        </EntityType>
+        <EntityType Name="Renter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" Nullable="false" />
+          <Property Name="AadharNumber" Type="bigint" Nullable="false" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Request_Details">
+          <Key>
+            <PropertyRef Name="Request_Id" />
+          </Key>
+          <Property Name="Request_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_id" Type="int" Nullable="false" />
+          <Property Name="Seller_Id" Type="int" Nullable="false" />
+          <Property Name="Customer_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sold_Property">
+          <Key>
+            <PropertyRef Name="Sold_id" />
+          </Key>
+          <Property Name="Sold_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="property_id" Type="int" Nullable="false" />
+          <Property Name="seller_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="deposit_amount" Type="int" Nullable="false" />
+          <Property Name="rent" Type="int" Nullable="false" />
+          <Property Name="date_of_sale" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateid" />
+          </Key>
+          <Property Name="stateid" Type="int" Nullable="false" />
+          <Property Name="state_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" Nullable="false" />
+          <Property Name="AadharNumber" Type="bigint" Nullable="false" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_city_State">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="stateid" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_Prop">
+          <End Role="Prop" Type="Self.Prop" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prop_Renter">
+          <End Role="Renter" Type="Self.Renter" Multiplicity="0..1" />
+          <End Role="Prop" Type="Self.Prop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prop">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Details_Prop">
+          <End Role="Prop" Type="Self.Prop" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request_Details" Type="Self.Request_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request_Details">
+              <PropertyRef Name="Property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Details_Renter">
+          <End Role="Renter" Type="Self.Renter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request_Details" Type="Self.Request_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request_Details">
+              <PropertyRef Name="Seller_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Details_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="1" />
+          <End Role="Request_Details" Type="Self.Request_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request_Details">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sold_Property_Prop">
+          <End Role="Prop" Type="Self.Prop" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sold_Property" Type="Self.Sold_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sold_Property">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sold_Property_Renter">
+          <End Role="Renter" Type="Self.Renter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sold_Property" Type="Self.Sold_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sold_Property">
+              <PropertyRef Name="seller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sold_Property_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sold_Property" Type="Self.Sold_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sold_Property">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BHK_type" EntityType="Self.BHK_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceRange" EntityType="Self.PriceRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prop" EntityType="Self.Prop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Renter" EntityType="Self.Renter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request_Details" EntityType="Self.Request_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sold_Property" EntityType="Self.Sold_Property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_city_State" Association="Self.FK_city_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_Prop" Association="Self.FK_Image_Prop">
+            <End Role="Prop" EntitySet="Prop" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prop_Renter" Association="Self.FK_Prop_Renter">
+            <End Role="Renter" EntitySet="Renter" />
+            <End Role="Prop" EntitySet="Prop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Details_Prop" Association="Self.FK_Request_Details_Prop">
+            <End Role="Prop" EntitySet="Prop" />
+            <End Role="Request_Details" EntitySet="Request_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Details_Renter" Association="Self.FK_Request_Details_Renter">
+            <End Role="Renter" EntitySet="Renter" />
+            <End Role="Request_Details" EntitySet="Request_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Details_Tenant" Association="Self.FK_Request_Details_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Request_Details" EntitySet="Request_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sold_Property_Prop" Association="Self.FK_Sold_Property_Prop">
+            <End Role="Prop" EntitySet="Prop" />
+            <End Role="Sold_Property" EntitySet="Sold_Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sold_Property_Renter" Association="Self.FK_Sold_Property_Renter">
+            <End Role="Renter" EntitySet="Renter" />
+            <End Role="Sold_Property" EntitySet="Sold_Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sold_Property_Tenant" Association="Self.FK_Sold_Property_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Sold_Property" EntitySet="Sold_Property" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PropertyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prop" Relationship="Database1Model.FK_Image_Prop" FromRole="Image" ToRole="Prop" />
+        </EntityType>
+        <EntityType Name="Prop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="BHK_type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="House_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address_Line1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address_Line2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rent" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="SellerID" Type="Int32" />
+          <NavigationProperty Name="Images1" Relationship="Database1Model.FK_Image_Prop" FromRole="Prop" ToRole="Image" />
+          <NavigationProperty Name="Renter" Relationship="Database1Model.FK_Prop_Renter" FromRole="Prop" ToRole="Renter" />
+          <NavigationProperty Name="Request_Details" Relationship="Database1Model.FK_Request_Details_Prop" FromRole="Prop" ToRole="Request_Details" />
+          <NavigationProperty Name="Sold_Property" Relationship="Database1Model.FK_Sold_Property_Prop" FromRole="Prop" ToRole="Sold_Property" />
+          <Property Name="Availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SquareFeet" Type="Int32" />
+          <Property Name="PropertyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Renter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+          <Property Name="AadharNumber" Type="Int64" Nullable="false" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Props" Relationship="Database1Model.FK_Prop_Renter" FromRole="Renter" ToRole="Prop" />
+          <NavigationProperty Name="Request_Details" Relationship="Database1Model.FK_Request_Details_Renter" FromRole="Renter" ToRole="Request_Details" />
+          <NavigationProperty Name="Sold_Property" Relationship="Database1Model.FK_Sold_Property_Renter" FromRole="Renter" ToRole="Sold_Property" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+          <Property Name="AadharNumber" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Request_Details" Relationship="Database1Model.FK_Request_Details_Tenant" FromRole="Tenant" ToRole="Request_Details" />
+          <NavigationProperty Name="Sold_Property" Relationship="Database1Model.FK_Sold_Property_Tenant" FromRole="Tenant" ToRole="Sold_Property" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Props" EntityType="Self.Prop" />
+          <EntitySet Name="Renters" EntityType="Self.Renter" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenant" />
+          <AssociationSet Name="FK_Image_Prop" Association="Database1Model.FK_Image_Prop">
+            <End Role="Prop" EntitySet="Props" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <EntitySet Name="Request_Details" EntityType="Database1Model.Request_Details" />
+          <AssociationSet Name="FK_Prop_Renter" Association="Database1Model.FK_Prop_Renter">
+            <End Role="Renter" EntitySet="Renters" />
+            <End Role="Prop" EntitySet="Props" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Details_Prop" Association="Database1Model.FK_Request_Details_Prop">
+            <End Role="Prop" EntitySet="Props" />
+            <End Role="Request_Details" EntitySet="Request_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Details_Renter" Association="Database1Model.FK_Request_Details_Renter">
+            <End Role="Renter" EntitySet="Renters" />
+            <End Role="Request_Details" EntitySet="Request_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Details_Tenant" Association="Database1Model.FK_Request_Details_Tenant">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="Request_Details" EntitySet="Request_Details" />
+          </AssociationSet>
+          <EntitySet Name="Sold_Property" EntityType="Database1Model.Sold_Property" />
+          <AssociationSet Name="FK_Sold_Property_Prop" Association="Database1Model.FK_Sold_Property_Prop">
+            <End Role="Prop" EntitySet="Props" />
+            <End Role="Sold_Property" EntitySet="Sold_Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sold_Property_Renter" Association="Database1Model.FK_Sold_Property_Renter">
+            <End Role="Renter" EntitySet="Renters" />
+            <End Role="Sold_Property" EntitySet="Sold_Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sold_Property_Tenant" Association="Database1Model.FK_Sold_Property_Tenant">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="Sold_Property" EntitySet="Sold_Property" />
+          </AssociationSet>
+          <EntitySet Name="cities" EntityType="Database1Model.city" />
+          <EntitySet Name="States" EntityType="Database1Model.State" />
+          <AssociationSet Name="FK_city_State" Association="Database1Model.FK_city_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="city" EntitySet="cities" />
+          </AssociationSet>
+          <EntitySet Name="BHK_type" EntityType="Database1Model.BHK_type" />
+          <EntitySet Name="PriceRanges" EntityType="Database1Model.PriceRange" />
+          <EntitySet Name="Admins" EntityType="Database1Model.Admin" />
+        </EntityContainer>
+        <Association Name="FK_Image_Prop">
+          <End Type="Database1Model.Prop" Role="Prop" Multiplicity="1" />
+          <End Type="Database1Model.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Request_Details">
+          <Key>
+            <PropertyRef Name="Request_Id" />
+          </Key>
+          <Property Name="Request_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_id" Type="Int32" Nullable="false" />
+          <Property Name="Seller_Id" Type="Int32" Nullable="false" />
+          <Property Name="Customer_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prop" Relationship="Database1Model.FK_Request_Details_Prop" FromRole="Request_Details" ToRole="Prop" />
+          <NavigationProperty Name="Renter" Relationship="Database1Model.FK_Request_Details_Renter" FromRole="Request_Details" ToRole="Renter" />
+          <NavigationProperty Name="Tenant" Relationship="Database1Model.FK_Request_Details_Tenant" FromRole="Request_Details" ToRole="Tenant" />
+        </EntityType>
+        <Association Name="FK_Prop_Renter">
+          <End Type="Database1Model.Renter" Role="Renter" Multiplicity="0..1" />
+          <End Type="Database1Model.Prop" Role="Prop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prop">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Details_Prop">
+          <End Type="Database1Model.Prop" Role="Prop" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Request_Details" Role="Request_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request_Details">
+              <PropertyRef Name="Property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Details_Renter">
+          <End Type="Database1Model.Renter" Role="Renter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Request_Details" Role="Request_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request_Details">
+              <PropertyRef Name="Seller_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Details_Tenant">
+          <End Type="Database1Model.Tenant" Role="Tenant" Multiplicity="1" />
+          <End Type="Database1Model.Request_Details" Role="Request_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request_Details">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sold_Property">
+          <Key>
+            <PropertyRef Name="Sold_id" />
+          </Key>
+          <Property Name="Sold_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="property_id" Type="Int32" Nullable="false" />
+          <Property Name="seller_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="deposit_amount" Type="Int32" Nullable="false" />
+          <Property Name="rent" Type="Int32" Nullable="false" />
+          <Property Name="date_of_sale" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Prop" Relationship="Database1Model.FK_Sold_Property_Prop" FromRole="Sold_Property" ToRole="Prop" />
+          <NavigationProperty Name="Renter" Relationship="Database1Model.FK_Sold_Property_Renter" FromRole="Sold_Property" ToRole="Renter" />
+          <NavigationProperty Name="Tenant" Relationship="Database1Model.FK_Sold_Property_Tenant" FromRole="Sold_Property" ToRole="Tenant" />
+        </EntityType>
+        <Association Name="FK_Sold_Property_Prop">
+          <End Type="Database1Model.Prop" Role="Prop" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Sold_Property" Role="Sold_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sold_Property">
+              <PropertyRef Name="property_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sold_Property_Renter">
+          <End Type="Database1Model.Renter" Role="Renter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Sold_Property" Role="Sold_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sold_Property">
+              <PropertyRef Name="seller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sold_Property_Tenant">
+          <End Type="Database1Model.Tenant" Role="Tenant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Sold_Property" Role="Sold_Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sold_Property">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="cityid" />
+          </Key>
+          <Property Name="cityid" Type="Int32" Nullable="false" />
+          <Property Name="cityname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stateid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="State" Relationship="Database1Model.FK_city_State" FromRole="city" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateid" />
+          </Key>
+          <Property Name="stateid" Type="Int32" Nullable="false" />
+          <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cities" Relationship="Database1Model.FK_city_State" FromRole="State" ToRole="city" />
+        </EntityType>
+        <Association Name="FK_city_State">
+          <End Type="Database1Model.State" Role="State" Multiplicity="1" />
+          <End Type="Database1Model.city" Role="city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="stateid" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BHK_type">
+          <Key>
+            <PropertyRef Name="bhk_id" />
+          </Key>
+          <Property Name="bhk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bhk_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PriceRange">
+          <Key>
+            <PropertyRef Name="PriceID" />
+          </Key>
+          <Property Name="PriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="RenterCount" Type="Int32" />
+          <Property Name="TenantCount" Type="Int32" />
+          <Property Name="PropertyCount" Type="Int32" />
+          <Property Name="PropertiesSold" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="Database1Model.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PropertyImage" ColumnName="PropertyImage" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Props">
+            <EntityTypeMapping TypeName="Database1Model.Prop">
+              <MappingFragment StoreEntitySet="Prop">
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="SquareFeet" ColumnName="SquareFeet" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="BHK_type" ColumnName="BHK_type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="House_type" ColumnName="House_type" />
+                <ScalarProperty Name="Address_Line1" ColumnName="Address_Line1" />
+                <ScalarProperty Name="Address_Line2" ColumnName="Address_Line2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Renters">
+            <EntityTypeMapping TypeName="Database1Model.Renter">
+              <MappingFragment StoreEntitySet="Renter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenants">
+            <EntityTypeMapping TypeName="Database1Model.Tenant">
+              <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request_Details">
+            <EntityTypeMapping TypeName="Database1Model.Request_Details">
+              <MappingFragment StoreEntitySet="Request_Details">
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Seller_Id" ColumnName="Seller_Id" />
+                <ScalarProperty Name="Property_id" ColumnName="Property_id" />
+                <ScalarProperty Name="Request_Id" ColumnName="Request_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sold_Property">
+            <EntityTypeMapping TypeName="Database1Model.Sold_Property">
+              <MappingFragment StoreEntitySet="Sold_Property">
+                <ScalarProperty Name="date_of_sale" ColumnName="date_of_sale" />
+                <ScalarProperty Name="rent" ColumnName="rent" />
+                <ScalarProperty Name="deposit_amount" ColumnName="deposit_amount" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+                <ScalarProperty Name="property_id" ColumnName="property_id" />
+                <ScalarProperty Name="Sold_id" ColumnName="Sold_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="Database1Model.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="stateid" ColumnName="stateid" />
+                <ScalarProperty Name="cityname" ColumnName="cityname" />
+                <ScalarProperty Name="cityid" ColumnName="cityid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="Database1Model.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="stateid" ColumnName="stateid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BHK_type">
+            <EntityTypeMapping TypeName="Database1Model.BHK_type">
+              <MappingFragment StoreEntitySet="BHK_type">
+                <ScalarProperty Name="bhk_name" ColumnName="bhk_name" />
+                <ScalarProperty Name="bhk_id" ColumnName="bhk_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceRanges">
+            <EntityTypeMapping TypeName="Database1Model.PriceRange">
+              <MappingFragment StoreEntitySet="PriceRange">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Database1Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="PropertiesSold" ColumnName="PropertiesSold" />
+                <ScalarProperty Name="PropertyCount" ColumnName="PropertyCount" />
+                <ScalarProperty Name="TenantCount" ColumnName="TenantCount" />
+                <ScalarProperty Name="RenterCount" ColumnName="RenterCount" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,187 @@
+﻿@model HouseRentManagementSystem.Models.Renter
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+
+}
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style>
+    .logo {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+    }
+
+    #img {
+        left: 64%;
+        position: absolute;
+    }
+
+    .btn {
+        left: 20%;
+        position: absolute;
+    }
+
+    .styled-table {
+        width: 50%;
+        margin-left: 15%;
+        margin-right: 15%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table {
+        margin: 0 auto;
+        border: 2PX double;
+    }
+
+        .styled-table th {
+            background-color: lightgreen;
+            color: black;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: black;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid black;
+            }
+
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+</style>
+<div>
+    <h3 style="text-align:center">
+        USER DETAILS (RENTER)
+    </h3>
+    <hr />
+
+    <div class="table-responsive-md">
+        &emsp;&emsp;&emsp;
+
+        <br><br />
+        <table class="styled-table" align="center">
+            <tbody>
+
+                <tr>
+                    <th>
+                        First name
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </td>
+            </tbody>
+            <tbody>
+
+                <tr>
+                    <th>
+                        Last name
+                    </th>
+
+
+                    <td>
+                        @Html.DisplayFor(model => model.LastName)
+                    </td>
+            </tbody>
+
+
+            <tbody>
+
+                <tr>
+                    <th>
+
+                        Email
+                    </th>
+
+
+                    <td>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+            </tbody>
+            <tbody>
+
+                <tr>
+                    <th>
+                        Password
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Password)
+                    </td>
+            </tbody>
+            <tbody>
+
+                <tr>
+                    <th>
+                        Phone number
+                    <td>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </td>
+            </tbody>
+            <tbody>
+
+                <tr>
+                    <th>
+                        Aadhar number
+                    <td>
+                        @Html.DisplayFor(model => model.AadharNumber)
+                    </td>
+            </tbody>
+            <tbody>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<br>
+<br>
+
+<img src="~/Icons/logo.png" class="logo" />
+
+<button class="btn btn-md btn-info" onclick="location.href = '@Url.Action("Index","AdminRenter")'">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Back
+</button>

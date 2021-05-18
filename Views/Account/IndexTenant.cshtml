@@ -1,0 +1,374 @@
+﻿@using HouseRentManagementSystem.Models;
+
+@{
+    ViewBag.Title = "IndexTenant";
+}
+<head>
+    <link rel="canonical" href="http://www.demo.freshdesignweb.com/web-hosting-templates-css3/" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10146041-25"></script>
+
+    <style>
+
+        .bg-custom-1 {
+            background-color: #85144b;
+        }
+
+        .bg-custom-2 {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+        }
+
+        /*To make button with padding and border*/
+        .accordion .btn {
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            padding: 7px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Red */
+        .accordion .danger {
+            border-color: red;
+            color: black;
+        }
+
+            .accordion .danger:hover {
+                background-color: red;
+                color: white;
+            }
+
+        .accordion .primary {
+            border-color: dodgerblue;
+            color: black;
+        }
+
+            .accordion .primary:hover {
+                background-color: dodgerblue;
+                color: white;
+            }
+
+        .accordion.secondary {
+            border-color: gray;
+            color: black;
+        }
+
+            .accordion .secondary:hover {
+                background-color: gray;
+                color: white;
+            }
+        /* Green */
+        .accordion .info {
+            border-color: orange;
+            color: black;
+        }
+
+            .accordion .info:hover {
+                background-color: orange;
+                color: white;
+            }
+
+
+        .bg-custom-1 {
+            background-color: #85144b;
+        }
+
+        .bg-custom-2 {
+            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+        }
+
+        body {
+            background: linear-gradient(white,gray);
+        }
+
+        article {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 300px !important;
+            border: solid;
+            margin-top: 20px;
+            margin-left: 30px;
+            margin-right: 33px;
+            margin-bottom: 200px;
+        }
+
+
+        article {
+            border-left: 1px dotted #97d947;
+            font-size: 14px;
+            color: #333;
+            border: 3px solid #97d947;
+            height: 316px;
+            width: 236px;
+            margin-top: 0;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 15px;
+        }
+
+            article hover {
+                -webkit-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                -moz-box-shadow: 3px 1px 25px 7px rgba(122, 122, 22, .6);
+                box-shadow: 3px 1px 25px 7px black;
+            }
+
+        .d-grid {
+            margin-left: -0.8rem !important;
+        }
+
+        .container {
+            align-items: self-end;
+        }
+
+        .card {
+            border-radius: 4px;
+            background: #fff;
+            box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+            transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+            padding: 14px 80px 18px 36px;
+            cursor: pointer;
+            display: inline;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+            }
+
+
+            .card img {
+                position: static;
+                top: 20px;
+                right: 15px;
+                max-height: 120px;
+            }
+
+        .card-1 {
+            background-image: url('../../Icons/No.1.png');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 100px;
+        }
+
+        .card-2 {
+            background-image: url('../../Icons/No.2.png');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 100px;
+        }
+
+        .card-3 {
+            background-image: url('../../Icons/No.3.png');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 100px;
+        }
+
+
+        .card {
+            margin: 40px;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Property | Home</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+<!-- Font awesome -->
+<link href="~/Content/user/css/font-awesome.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="~/Content/user/css/bootstrap.css" rel="stylesheet">
+<!-- slick slider -->
+<link rel="stylesheet" type="text/css" href="~/Content/user/css/slick.css">
+<!-- price picker slider -->
+<link rel="stylesheet" type="text/css" href="~/Content/user/css/nouislider.css">
+<!-- Fancybox slider -->
+<link rel="stylesheet" href="~/Content/user/css/jquery.fancybox.css" type="text/css" media="screen" />
+<!-- Theme color -->
+<link id="switcher" href="~/Content/user/css/theme-color/default-theme.css" rel="stylesheet">
+
+<!-- Main style sheet -->
+<link href="~/Content/user/css/style.css" rel="stylesheet">
+
+
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Property | Home</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+<!-- Font awesome -->
+<link href="~/Content/user/css/font-awesome.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="~/Content/user/css/bootstrap.css" rel="stylesheet">
+<!-- slick slider -->
+<link rel="stylesheet" type="text/css" href="~/Content/user/css/slick.css">
+<!-- price picker slider -->
+<link rel="stylesheet" type="text/css" href="~/Content/user/css/nouislider.css">
+<!-- Fancybox slider -->
+<link rel="stylesheet" href="~/Content/user/css/jquery.fancybox.css" type="text/css" media="screen" />
+<!-- Theme color -->
+<link id="switcher" href="~/Content/user/css/theme-color/default-theme.css" rel="stylesheet">
+
+<!-- Main style sheet -->
+<link href="~/Content/user/css/style.css" rel="stylesheet">
+
+
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+
+
+@{ int count = 0;
+    int temp = 1;
+}
+@if (ViewBag.topseller == null)
+{
+    <h3>error</h3>
+}
+else
+
+{
+    <div class="container" align="right">
+        <div class="row">
+
+            @foreach (var item in ViewBag.topseller)
+            {
+
+
+
+                <div class="card card-@temp">
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Top seller #@temp &nbsp;&nbsp;</h3>
+
+                    @item.FirstName
+                    @item.LastName
+                    <br>
+
+                    @{
+                        count++;
+                        temp++;
+                    }
+
+                </div>
+
+
+            }
+        </div>
+    </div>
+}
+
+
+
+
+
+<section id="aa-latest-property">
+    <div class="container">
+        <div class="aa-latest-property-area">
+            <div class="aa-title">
+                <h2>Latest Properties</h2>
+                <span></span>
+            </div>
+
+
+            <div class="d-grid gap-3">
+
+                @foreach (var item in Model)
+                {
+                    var image = item.Images1;
+
+
+                    <article class="aa-properties-item">
+                        <a href="#" class="aa-properties-item-img">
+
+
+
+
+                            @for (int j = 0; j < 1; j++)
+                            {
+
+                                if (item.Images1 != null)
+                                {
+                                    var base64 = Convert.ToBase64String(image[j].PropertyImage);
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <img src="@imgsrc" style="height:200px;max-height:200px"/>
+
+                                }
+                            }
+
+                            <div class="aa-tag for-rent">
+                                For Rent
+                            </div>
+                            <div class="aa-properties-item-content">
+                                <div class="aa-properties-info">
+                                    <span>@item.House_type</span>
+                                    <span>@item.BHK_type</span>
+                                    <span>@item.SquareFeet sq.ft</span>
+                                </div>
+                                <div class="aa-properties-about">
+                                    <h3><a href="#">@item.PropertyName</a></h3>
+                                    <p>This is a @item.BHK_type @item.House_type of @item.SquareFeet (Sq.ft.) in @item.city city at @item.state</p>
+                                </div>
+                                <div class="aa-properties-detial">
+                                    <span class="aa-price">
+                                        <span>&#8377;</span> @item.Rent
+                                    </span>
+                                    <a href="/Props/Details/@item.Id" class="aa-search-btn" style="color:orange">View Details</a>
+                                    <br>
+                                    <br>
+                                </div>
+
+
+                                <button id="request" class="btn btn-block btn-success " type="button"
+                                        name="Request"
+                                        onclick="location.href = '@Url.Action("UserIndexs","Props", new { id = item.Id, sid = item.SellerID })'">
+                                    REQUEST
+
+                                </button>
+
+                            </div>
+                        </a>
+
+
+
+
+                    </article>
+
+
+
+
+
+
+                }
+                <br>
+
+
+            </div>     <br>
+
+
+            <div></div>
+
+
+
+        </div>
+
+    </div>
+</section>
+
+
